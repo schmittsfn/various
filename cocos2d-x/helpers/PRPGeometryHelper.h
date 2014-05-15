@@ -32,10 +32,11 @@ int getCrossProductSign(const cocos2d::Point& a, const cocos2d::Point& b)
 /** Returns the angle between two vectors */
 float getAngleBetweenVectors(const cocos2d::Point& a, const cocos2d::Point& b)
 {
-	const float cosA = a.dot(b) / (getVectorLength(a) * getVectorLength(b));
-	const float rad = acos(cosA);
-	float deg = CC_RADIANS_TO_DEGREES(rad);
-	return deg * getCrossProductSign(a, b);
+	const float lengthProd = getVectorLength(a) * getVectorLength(b);
+    const float cosA = MIN(a.dot(b) / lengthProd, 1.0);
+    const float rad = acos(cosA);
+    float deg = CC_RADIANS_TO_DEGREES(rad);
+    return deg * getCrossProductSign(a, b);
 }
 
 #endif
