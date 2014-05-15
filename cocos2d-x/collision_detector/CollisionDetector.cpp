@@ -14,6 +14,7 @@ CollisionDetector::CollisionDetector()
 CollisionDetector::~CollisionDetector()
 {
     CC_SAFE_FREE(_buffer);
+    CC_SAFE_RELEASE(_glProgram);
 }
 
 bool CollisionDetector::init()
